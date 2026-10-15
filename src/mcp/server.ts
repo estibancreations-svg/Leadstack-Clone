@@ -28,7 +28,15 @@ export function createLeadstackMcpServer(
       }),
       annotations: { readOnlyHint: true },
     },
-    async (input) => result(await operations.searchContacts(input)),
+    async (input) =>
+      result(
+        await operations.searchContacts({
+          ...(input.query !== undefined ? { query: input.query } : {}),
+          ...(input.tags !== undefined ? { tags: input.tags } : {}),
+          ...(input.status !== undefined ? { status: input.status } : {}),
+          ...(input.limit !== undefined ? { limit: input.limit } : {}),
+        }),
+      ),
   );
 
   server.registerTool(
@@ -57,7 +65,17 @@ export function createLeadstackMcpServer(
       }),
       annotations: { readOnlyHint: false, destructiveHint: false },
     },
-    async (input) => result(await operations.createContact(input)),
+    async (input) =>
+      result(
+        await operations.createContact({
+          firstName: input.firstName,
+          ...(input.lastName !== undefined ? { lastName: input.lastName } : {}),
+          ...(input.email !== undefined ? { email: input.email } : {}),
+          ...(input.phone !== undefined ? { phone: input.phone } : {}),
+          ...(input.status !== undefined ? { status: input.status } : {}),
+          ...(input.tags !== undefined ? { tags: input.tags } : {}),
+        }),
+      ),
   );
 
   server.registerTool(
@@ -75,7 +93,18 @@ export function createLeadstackMcpServer(
       }),
       annotations: { readOnlyHint: false, destructiveHint: false },
     },
-    async (input) => result(await operations.updateContact(input)),
+    async (input) =>
+      result(
+        await operations.updateContact({
+          contactId: input.contactId,
+          ...(input.firstName !== undefined ? { firstName: input.firstName } : {}),
+          ...(input.lastName !== undefined ? { lastName: input.lastName } : {}),
+          ...(input.email !== undefined ? { email: input.email } : {}),
+          ...(input.phone !== undefined ? { phone: input.phone } : {}),
+          ...(input.status !== undefined ? { status: input.status } : {}),
+          ...(input.tags !== undefined ? { tags: input.tags } : {}),
+        }),
+      ),
   );
 
   server.registerTool(
@@ -109,7 +138,14 @@ export function createLeadstackMcpServer(
       }),
       annotations: { readOnlyHint: false, destructiveHint: false },
     },
-    async (input) => result(await operations.createTask(input)),
+    async (input) =>
+      result(
+        await operations.createTask({
+          title: input.title,
+          ...(input.status !== undefined ? { status: input.status } : {}),
+          ...(input.dueAt !== undefined ? { dueAt: input.dueAt } : {}),
+        }),
+      ),
   );
 
   return server;
