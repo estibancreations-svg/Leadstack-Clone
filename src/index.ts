@@ -4,3 +4,4 @@ export * from "./core/audit.js";
 export * from "./ports/crm.js";
 export * from "./services/leadstack.js";
 export * from "./tools/catalog.js";
+export * from "./adapters/index.js";
