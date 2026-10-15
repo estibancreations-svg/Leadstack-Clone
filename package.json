@@ -1,0 +1,25 @@
+{
+  "name": "@estibancreations/leadstack",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Native CRM intelligence and automation control plane for EstibanCreations",
+  "type": "module",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "verify": "npm run typecheck && npm test"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.18.0",
+    "zod": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.18.0",
+    "typescript": "~5.9.0",
+    "vitest": "^3.2.4"
+  }
+}
