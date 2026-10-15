@@ -1,0 +1,36 @@
+name: Leadstack Quality Gate
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - "foundation/**"
+      - "feature/**"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          package-manager-cache: false
+
+      - name: Install dependencies
+        run: npm install --ignore-scripts
+
+      - name: Typecheck and test
+        run: npm run verify
+
+      - name: Build
+        run: npm run build
