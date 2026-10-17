@@ -2,7 +2,7 @@
 
 ## Phase 0 — Foundation
 
-Status: in progress
+Status: foundation complete, transport pending (corrected 2026-10-17)
 
 - [x] Initialize repository
 - [x] Establish no-third-party-CRM boundary
@@ -14,23 +14,23 @@ Status: in progress
 - [x] AAL2 external-action rule
 - [x] Audit sink contract
 - [x] Initial policy/execution tests
-- [ ] Green GitHub Quality Gate
+- [x] Green GitHub Quality Gate (passes on 9eaf00a; re-verify in Actions after any gate edit)
 - [ ] MCP v2 transport/server binding
 
 ## Phase 1 — Bind owned CRM core
 
 Target: the existing standalone CRM capabilities.
 
-- [ ] Define standalone CRM adapter contract
-- [ ] Map workspace/agency identity without duplicating authority
-- [ ] Contacts: search/get/create/update
-- [ ] Companies
-- [ ] Deals/pipelines
-- [ ] Tasks
+- [x] Define standalone CRM adapter contract
+- [x] Map workspace/agency identity without duplicating authority
+- [x] Contacts: search/get/create/update
+- [x] Companies (list only — broader management remains below)
+- [x] Deals/pipelines (list only — broader management remains below)
+- [x] Tasks (create only — broader management remains below)
 - [ ] Notes
 - [ ] Audit read
-- [ ] Cross-workspace denial tests
-- [ ] Agent delegated-permission tests
+- [x] Cross-workspace denial tests (`tests/policy.test.ts`, `tests/standalone-crm-adapter.test.ts`)
+- [x] Agent delegated-permission tests (`tests/policy.test.ts`, `tests/mcp-phase1.test.ts` — undelegated agent denied before adapter resolution)
 - [ ] Live non-destructive smoke test
 
 ## Phase 2 — Communications + calendar
@@ -79,3 +79,5 @@ A phase is not considered complete because code exists. It requires:
 - failure-path evidence
 - exact tested commit SHA
 - deployment/runtime evidence for deployed components
+
+> Correction note (2026-10-17): Phase 1 items above marked done are the Phase 1 scope actually merged in PRs #1–3 (head 9eaf00a). Still unchecked: Notes, Audit read, Live non-destructive smoke test, broader company/deal/task management. MCP v2 transport/server binding stays unchecked — factory exists (`src/mcp/server.ts`), but no deployed transport endpoint, account connection, persistent audit, or live smoke-test evidence. Code exists ≠ phase complete (see Production gate). Operating policy: `docs/OPERATING_POLICY.md` (Owner-approved 2026-10-17).
