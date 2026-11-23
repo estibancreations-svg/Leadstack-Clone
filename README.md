@@ -74,3 +74,7 @@ See:
 Estiban Creations selected **Render** for application hosting. Existing Supabase projects continue to provide PostgreSQL, authentication and storage where applicable. This repository's placement is **Discovery · separate CRM lineage**. Verify the current runtime and CRM integration contract before provisioning. Keep access through approved interfaces and preserve the standalone scope.
 
 The GrantOS review verified 27 failed Vercel preview checks across nine commit SHAs, a temporary successful preview checkpoint and a separate production availability block. See the [repository mapping and evidence](docs/RENDER-MIGRATION-MAP.md) for context and release requirements.
+
+### Migration verification · 2026-11-22T21:35:36-06:00
+
+**Runtime ownership pending.** See the [timestamped deployment mapping](docs/RENDER-MIGRATION-MAP.md) for evidence and remaining checks.
